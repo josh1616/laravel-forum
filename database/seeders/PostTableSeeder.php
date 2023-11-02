@@ -19,5 +19,7 @@ class PostTableSeeder extends Seeder
         $post->likes = 10;
         $post->dislikes = 2;
         $post->save();
+
+        Post::factory()->count(10)->create();
     }
 }
