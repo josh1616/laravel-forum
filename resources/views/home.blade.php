@@ -98,8 +98,8 @@
                 </div>
                 
             </div>
-            <div class="w-1/3 sm:hidden">
-                <div class="flex flex-col items-end">
+            <div class="w-1/3">
+                <div class="flex flex-col items-end sticky top-4">
                     <div class="text-left">
                         <h2 class="text-black text-3xl mb-8">Popular tags</h2>
                         <h3 class="text-gray-400 text-2xl mb-4 text-left">Gaming</h3>

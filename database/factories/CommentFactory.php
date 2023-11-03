@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +15,13 @@ class CommentFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+     
     public function definition(): array
     {
         return [
             'text' => fake()->text(),
+            'post_id'=>Post::inRandomOrder()->first()->id,
         ];
     }
 }
