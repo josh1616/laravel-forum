@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PostTableSeeder::class);
         $this->call(CommentTableSeeder::class);
+        $this->call(PostImageTableSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

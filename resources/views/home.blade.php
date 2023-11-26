@@ -12,58 +12,6 @@
     <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-8 max-w-3xl flex flex-col ease-linear duration-150 hover:border-black hover:cursor-pointer">
         <div class="flex items-center mb-4">
             <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
-            <p class="inline-block text-black text-base mr-2.5">{{$name}}</p>
-            <p class="inline-block text-gray-800 text-base">19/10/2023</p>
-        </div>
-        <p class="text-2xl text-black mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad
-            exercitation ullamco laboris nisi ut aliquip ex ea commo.
-        </p>
-        <div class="flex">
-            <div class="py-1 px-4 bg-green-200 rounded-full flex mr-3.5">
-                <img src="\img\upvote.svg" alt="upvote" class="mr-2">
-                <p>3</p>
-            </div>
-            <div class="py-1 px-4 bg-red-200 rounded-full flex mr-3.5">
-                <img src="\img\downvote.svg" alt="upvote" class="mr-2">
-                <p>2</p>
-            </div>
-            <div class="py-1 px-4 bg-gray-200 rounded-full flex">
-                <img src="\img\message.svg" alt="message icon" class="mr-2">
-                <p class="text-black text-base">3 comments</p>
-            </div>
-        </div>
-    </div>
-    <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-8 max-w-3xl flex flex-col ease-linear duration-150 hover:border-black hover:cursor-pointer">
-        <div class="flex items-center mb-4">
-            <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
-            <p class="inline-block text-black text-base mr-2.5">Joshua Richardson</p>
-            <p class="inline-block text-gray-800 text-base">19/10/2023</p>
-        </div>
-        <p class="text-2xl text-black mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad
-            exercitation ullamco laboris nisi ut aliquip ex ea commo.
-        </p>
-        <div class="flex">
-            <div class="py-1 px-4 bg-green-200 rounded-full flex mr-3.5">
-                <img src="\img\upvote.svg" alt="upvote" class="mr-2">
-                <p>3</p>
-            </div>
-            <div class="py-1 px-4 bg-red-200 rounded-full flex mr-3.5">
-                <img src="\img\downvote.svg" alt="upvote" class="mr-2">
-                <p>2</p>
-            </div>
-            <div class="py-1 px-4 bg-gray-200 rounded-full flex">
-                <img src="\img\message.svg" alt="message icon" class="mr-2">
-                <p class="text-black text-base">3 comments</p>
-            </div>
-        </div>
-    </div>
-    <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-8 max-w-3xl flex flex-col ease-linear duration-150 hover:border-black hover:cursor-pointer">
-        <div class="flex items-center mb-4">
-            <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
             <p class="inline-block text-black text-base mr-2.5">Joshua Richardson</p>
             <p class="inline-block text-gray-800 text-base">19/10/2023</p>
         </div>
@@ -90,30 +38,31 @@
             </div>
         </div>
     </div>
-    <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-8 max-w-3xl flex flex-col ease-linear duration-150 hover:border-black hover:cursor-pointer">
-        <div class="flex items-center mb-4">
-            <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
-            <p class="inline-block text-black text-base mr-2.5">{{$name}}</p>
-            <p class="inline-block text-gray-800 text-base">19/10/2023</p>
+    
+    @foreach ($posts as $post)
+        <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-8 max-w-3xl flex flex-col ease-linear duration-150 hover:border-black hover:cursor-pointer">
+            <div class="flex items-center mb-4">
+                <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
+                <p class="inline-block text-black text-base mr-2.5">Joshh</p>
+                <p class="inline-block text-gray-800 text-base">19/10/2023</p>
+            </div>
+            <p class="text-2xl text-black mb-4">
+                {{$post->text}}
+            </p>
+            <div class="flex">
+                <div class="py-1 px-4 bg-green-200 rounded-full flex mr-3.5">
+                    <img src="\img\upvote.svg" alt="upvote" class="mr-2">
+                    <p>{{$post->likes}}</p>
+                </div>
+                <div class="py-1 px-4 bg-red-200 rounded-full flex mr-3.5">
+                    <img src="\img\downvote.svg" alt="upvote" class="mr-2">
+                    <p>{{$post->dislikes}}</p>
+                </div>
+                <div class="py-1 px-4 bg-gray-200 rounded-full flex">
+                    <img src="\img\message.svg" alt="message icon" class="mr-2">
+                    <p class="text-black text-base">3 comments</p>
+                </div>
+            </div>
         </div>
-        <p class="text-2xl text-black mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad
-            exercitation ullamco laboris nisi ut aliquip ex ea commo.
-        </p>
-        <div class="flex">
-            <div class="py-1 px-4 bg-green-200 rounded-full flex mr-3.5">
-                <img src="\img\upvote.svg" alt="upvote" class="mr-2">
-                <p>3</p>
-            </div>
-            <div class="py-1 px-4 bg-red-200 rounded-full flex mr-3.5">
-                <img src="\img\downvote.svg" alt="upvote" class="mr-2">
-                <p>2</p>
-            </div>
-            <div class="py-1 px-4 bg-gray-200 rounded-full flex">
-                <img src="\img\message.svg" alt="message icon" class="mr-2">
-                <p class="text-black text-base">3 comments</p>
-            </div>
-        </div>
-    </div>
+    @endforeach
 @endsection
