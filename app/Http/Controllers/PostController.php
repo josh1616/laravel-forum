@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -12,8 +13,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        
+        $posts = Post::cursorPaginate(5);
         return view('home', ['posts' => $posts]);
+        
+
     }
 
     /**
@@ -35,10 +39,12 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
+    //can send comment numbers here also 
     public function show(string $id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.show', ['post' => $post]);
+        $totalComments = Comment::where('post_id')->count();
+        return view('posts.show', ['post' => $post, 'comments' => $totalComments]);
     }
 
     /**
