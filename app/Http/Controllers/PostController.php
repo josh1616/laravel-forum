@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        return view('posts.create');
     }
 
     /**
@@ -33,7 +33,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate ([
+            'text' => 'required|max:255',
+            'likes' => 'required|numeric',
+            'dislikes' => 'required|numeric',
+            'id' => 'required:integer',
+        ]);
+
+        dd($validatedData);
     }
 
     /**

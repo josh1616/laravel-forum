@@ -32,6 +32,13 @@
             </div>
             
             <div class="flex flex-col px-12 py-16 max-w-3xl mx-auto xl:px-6">
+                @if ($errors->any())
+                    <div>
+                        @foreach ($errors->all() as $error)
+                            <p>{{$error}}</p>
+                        @endforeach
+                    </div>
+                @endif
                 @yield('content')
             </div>
         </div>

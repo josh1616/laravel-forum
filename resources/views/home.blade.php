@@ -9,9 +9,9 @@
 
 @section('content')
     <h1 class="text-3xl	text-black mb-12">Your feed</h1>
-    {{-- <a href="{{route('post.create')}}">
+    <a href="{{route('posts.create')}}">
         Create post
-    </a> --}}
+    </a>
     <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-8 max-w-3xl flex flex-col ease-linear duration-150 hover:border-black hover:cursor-pointer">
         <div class="flex items-center mb-4">
             <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
