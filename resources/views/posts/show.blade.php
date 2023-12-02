@@ -33,6 +33,14 @@
             </div>
         </div>
     </div>
+
+    <div>
+        @foreach($post->comments as $comment)
+        {{ $comment->text }}
+        @endforeach
+    </div>
+
+    
     
     
 @endsection

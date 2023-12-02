@@ -13,13 +13,14 @@ class PostTableSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        
         $post = new Post;
         $post->text = "Lorem ipsum dolar sit amet consecutar";
         $post->likes = 10;
         $post->dislikes = 2;
+        $post->user_id = 1;
         $post->save();
 
-        Post::factory()->count(10)->create();
+        Post::factory()->count(20)->create();
     }
 }

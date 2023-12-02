@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +21,7 @@ class PostFactory extends Factory
             'text' => fake()->text(),
             'likes' => fake()->randomFloat(0,0,100),
             'dislikes' => fake()->randomFloat(0,0,100),
+            'user_id'=>User::inRandomOrder()->first()->id,
         ];
     }
 }

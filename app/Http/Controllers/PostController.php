@@ -14,7 +14,7 @@ class PostController extends Controller
     public function index()
     {
         
-        $posts = Post::cursorPaginate(5);
+        $posts = Post::latest()->cursorPaginate(5);
         return view('home', ['posts' => $posts]);
         
 
@@ -40,7 +40,10 @@ class PostController extends Controller
             'id' => 'required:integer',
         ]);
 
-        dd($validatedData);
+        Post::create($validatedData);
+
+        $posts = Post::cursorPaginate(5);
+        return view('home', ['posts' => $posts]);
     }
 
     /**
