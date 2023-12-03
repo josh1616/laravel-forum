@@ -35,15 +35,14 @@ class PostController extends Controller
     {
         $validatedData = $request->validate ([
             'text' => 'required|max:255',
-            // 'likes' => 'required|numeric',
-            // 'dislikes' => 'required|numeric',
-            'id' => 'required:integer',
-            'user_id' => 'required:integer',
         ]);
+
+        $validatedData['user_id'] = auth()->id();
 
         Post::create($validatedData);
 
         $posts = Post::cursorPaginate(5);
+
         return view('home', ['posts' => $posts]);
     }
 

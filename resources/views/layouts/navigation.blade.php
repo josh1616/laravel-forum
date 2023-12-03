@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+{{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -97,4 +97,55 @@
             </div>
         </div>
     </div>
-</nav>
+</nav> --}}
+
+
+
+<div class="bg-green-100 min-w-80 w-80 px-3 fixed h-full flex flex-col justify-between py-12 -xl:w-16 -xl:min-w-16 -xl:px-2 -xl:mx-auto">
+    <div class="flex-col">
+        <a href="http://localhost/" class="px-3 flex items-center mb-12">
+            <div class="bg-green-700 w-6 h-6 rounded-full mr-3 -xl:mr-0"></div>
+            <p class="font-bold -xl:hidden">Josh's Forum</p>
+        </a>
+        <button class="flex items-center w-full ease-linear rounded-xl duration-150 p-3 hover:bg-green-200 -xl:p-2 -xl:justify-center">
+            <img src="\img\notification-icon--18x20.svg" alt="notification icon" class="mr-3 -xl:mr-0"/>
+            <p class="text-base text-black -xl:hidden">Notifications</p>
+        </button>
+        <a href="{{ route('logout') }}" class="flex items-center w-full ease-linear rounded-xl duration-150 p-3 hover:bg-green-200 -xl:p-2 -xl:justify-center">
+            <img src="\img\settings-icon--18x14.svg" alt="notification icon" class="mr-3 -xl:mr-0"/>
+            <p class="text-base text-black -xl:hidden">Logout</p>
+        </a>
+        <div>
+    
+            <!-- Responsive Settings Options -->
+            <div class="pt-4 pb-1 border-t border-gray-200">
+    
+                <div class="mt-3 space-y-1">
+                    <x-responsive-nav-link :href="route('profile.edit')">
+                        {{ __('Profile') }}
+                    </x-responsive-nav-link>
+    
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+    
+                        <x-responsive-nav-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <a href="{{route('profile.edit')}}" class="flex items-center w-full ease-linear rounded-xl duration-150 p-3 hover:bg-green-200 -xl:p-2 -xl:justify-center">
+        <div class="bg-gray-300 w-12 h-12 rounded-full mr-3 -xl:mr-0 -xl:w-8 -xl:h-8"></div>
+        <div>
+            <p class="font-medium text-base text-gray-800 block">{{ Auth::user()->name }}</p>
+            <p class="font-medium text-sm text-gray-500 block">{{ Auth::user()->email }}</p>
+        </div>
+        
+    </a>
+</div>

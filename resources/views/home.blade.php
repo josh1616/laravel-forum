@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.app')
 
 @section('header')
 <meta charset="UTF-8">
@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
 @endsection
+
 
 @section('content')
     <div class="flex justify-between">
@@ -17,7 +18,7 @@
     </div>
     </div>
     
-    <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-8 max-w-3xl flex flex-col ease-linear duration-150 hover:border-black hover:cursor-pointer">
+    <div class="border border border-gray-300 rounded-3xl p-6 mb-8 max-w-3xl flex flex-col ease-linear duration-150 hover:border-black hover:cursor-pointer">
         <div class="flex items-center mb-4">
             <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
             <p class="inline-block text-black text-base mr-2.5">Joshua Richardson</p>
@@ -76,6 +77,4 @@
     @endforeach
 
     {{ $posts->links()}}
-
-
 @endsection

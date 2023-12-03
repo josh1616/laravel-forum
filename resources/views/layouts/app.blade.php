@@ -14,23 +14,35 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <body>
+        <div style="max-width: 1920px">
+            <div class="flex">
+                <div class="min-w-80 w-80 h-full xl:w-16 xl:min-w-16">
+                    @auth
+                        @include('layouts.navigation')
+                    @endauth
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                    @guest
+                        @include('layouts.navigation')
+                    @endguest
+                </div>
+                
+                <main class="flex flex-col px-12 py-16 max-w-3xl mx-auto w-full xl:px-6">
+                    @if ($errors->any())
+                        <div>
+                            @foreach ($errors->all() as $error)
+                                <p>{{$error}}</p>
+                            @endforeach
+                        </div>
+                    @endif
+                    @yield('content')
+                    @yield('fixed')
+                    {{-- {{ $slot }} --}}
+                </main>
+            </div>
         </div>
     </body>
 </html>
+
+
+

@@ -31,7 +31,7 @@
                 </div>
             </div>
             
-            <div class="flex flex-col px-12 py-16 max-w-3xl mx-auto xl:px-6">
+            <div class="flex flex-col px-12 py-16 max-w-3xl mx-auto xl:px-6 w-full">
                 @if ($errors->any())
                     <div>
                         @foreach ($errors->all() as $error)

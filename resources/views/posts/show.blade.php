@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.app')
 
 @section('header')
 <meta charset="UTF-8">
@@ -9,8 +9,8 @@
 
 @section('content')
     {{-- <h1 class="text-3xl	text-black mb-12">{{$post->id}}</h1> --}}
-    <div class="border-b border-gray-300 mb-12">
-        <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-12 max-w-3xl flex flex-col">
+    <div class="border-b border-gray-300 mb-12 w-full">
+        <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-12 max-w-3xl flex flex-col w-full">
             <div class="flex items-center mb-4">
                 <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
                 <p class="inline-block text-black text-base mr-2.5">{{$post->user->name}}</p>
@@ -50,11 +50,5 @@
         </p>
         
     </div>
-    @endforeach
-
-
-
-    
-    
-    
+    @endforeach    
 @endsection
