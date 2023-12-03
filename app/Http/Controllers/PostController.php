@@ -35,9 +35,10 @@ class PostController extends Controller
     {
         $validatedData = $request->validate ([
             'text' => 'required|max:255',
-            'likes' => 'required|numeric',
-            'dislikes' => 'required|numeric',
+            // 'likes' => 'required|numeric',
+            // 'dislikes' => 'required|numeric',
             'id' => 'required:integer',
+            'user_id' => 'required:integer',
         ]);
 
         Post::create($validatedData);
@@ -53,8 +54,9 @@ class PostController extends Controller
     public function show(string $id)
     {
         $post = Post::findOrFail($id);
-        $totalComments = Comment::where('post_id')->count();
-        return view('posts.show', ['post' => $post, 'comments' => $totalComments]);
+        $comments = $post->comments;
+        //$comments = Comment::where('post_id', $id)->get();
+        return view('posts.show', ['post' => $post, 'comments' => $comments]);
     }
 
     /**
