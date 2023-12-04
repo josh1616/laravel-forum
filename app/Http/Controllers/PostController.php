@@ -43,7 +43,7 @@ class PostController extends Controller
 
         $posts = Post::cursorPaginate(5);
 
-        return view('home', ['posts' => $posts]);
+        return view('posts.create');
     }
 
     /**

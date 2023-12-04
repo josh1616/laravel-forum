@@ -107,6 +107,7 @@
             <div class="bg-green-700 w-6 h-6 rounded-full mr-3 -xl:mr-0"></div>
             <p class="font-bold -xl:hidden">Josh's Forum</p>
         </a>
+        @auth
         <button class="flex items-center w-full ease-linear rounded-xl duration-150 p-3 hover:bg-green-200 -xl:p-2 -xl:justify-center">
             <img src="\img\notification-icon--18x20.svg" alt="notification icon" class="mr-3 -xl:mr-0"/>
             <p class="text-base text-black -xl:hidden">Notifications</p>
@@ -115,8 +116,9 @@
             <img src="\img\settings-icon--18x14.svg" alt="notification icon" class="mr-3 -xl:mr-0"/>
             <p class="text-base text-black -xl:hidden">Logout</p>
         </a>
+        @endauth
+        @auth
         <div>
-    
             <!-- Responsive Settings Options -->
             <div class="pt-4 pb-1 border-t border-gray-200">
     
@@ -138,14 +140,21 @@
                 </div>
             </div>
         </div>
+        @endauth
         
     </div>
+    @auth
     <a href="{{route('profile.edit')}}" class="flex items-center w-full ease-linear rounded-xl duration-150 p-3 hover:bg-green-200 -xl:p-2 -xl:justify-center">
         <div class="bg-gray-300 w-12 h-12 rounded-full mr-3 -xl:mr-0 -xl:w-8 -xl:h-8"></div>
         <div>
             <p class="font-medium text-base text-gray-800 block">{{ Auth::user()->name }}</p>
             <p class="font-medium text-sm text-gray-500 block">{{ Auth::user()->email }}</p>
-        </div>
-        
+        </div>        
     </a>
+    @endauth
+    @guest
+    <a href="{{route('login')}}" class="bg-green-400 text-base rounded-full text-black text-center text-base inline-block py-2 px-5">
+        Login
+    </a>
+    @endguest
 </div>

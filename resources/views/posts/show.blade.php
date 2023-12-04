@@ -35,6 +35,10 @@
     <div>
         <h1 class="text-3xl text-black pb-6">{{$post->comments->count()}} comments</h1>
     </div>
+
+    {{-- <form action="{{route("")}}">
+
+    </form> --}}
     
 
     @foreach ($comments as $comment)
