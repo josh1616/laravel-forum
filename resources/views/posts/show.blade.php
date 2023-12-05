@@ -40,6 +40,23 @@
 
     </form> --}}
     
+    <form action="{{ route('posts.comments.store',$post->id,['post_id' => $post->id])}}" method="POST">
+        @csrf
+        <textarea rows="4" type="text" id="text" name="text" value="{{ old('text') }}" class="w-full border-1 border-gray-300 rounded-3xl mb-2"></textarea>
+        <input type="submit" value="Submit" class="bg-green-400 text-base rounded-full text-black text-base inline-block py-2 px-5 mb-12">
+    </form>
 
-    @include('comments.comments') 
+    @foreach ($comments as $comment)
+    
+    <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-8 max-w-3xl flex flex-col">
+        <div class="flex items-center mb-4">
+            <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
+            <p class="inline-block text-black text-base mr-2.5">{{$comment->user->name}}</p>
+            <p class="inline-block text-gray-800 text-base">{{$post->created_at}}</p>
+        </div>
+        <p class="text-2xl text-black">
+            {{$comment->text}}
+        </p>
+    </div>
+@endforeach   
 @endsection

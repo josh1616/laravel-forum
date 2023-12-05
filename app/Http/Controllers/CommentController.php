@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Post;
+#use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
-        $posts = Post::latest()->cursorPaginate(5);
-        return view('home', ['posts' => $posts]);
-        
 
     }
 
@@ -25,25 +22,28 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $post_id)
     {
+
         $validatedData = $request->validate ([
             'text' => 'required|max:255',
         ]);
 
         $validatedData['user_id'] = auth()->id();
+        $validatedData['post_id'] = $post_id;
 
-        Post::create($validatedData);
+        Comment::create($validatedData);
 
-        $posts = Post::cursorPaginate(5);
-
-        return view('posts.create');
+        $post = Post::findOrFail($post_id);
+        $comments = $post->comments->sortByDesc('created_at');
+        //$comments = Comment::where('post_id', $id)->get();
+        return view('posts.show', ['post' => $post, 'comments' => $comments]);
     }
 
     /**
@@ -52,10 +52,7 @@ class PostController extends Controller
     //can send comment numbers here also 
     public function show(string $id)
     {
-        $post = Post::findOrFail($id);
-        $comments = $post->comments->sortByDesc('created_at');
-        //$comments = Comment::where('post_id', $id)->get();
-        return view('posts.show', ['post' => $post, 'comments' => $comments]);
+
     }
 
     /**
