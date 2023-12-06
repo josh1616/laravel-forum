@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\User;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $posts = Post::latest()->cursorPaginate(5);
-        return view('home', ['posts' => $posts]);
+
     }
 
     /**
@@ -22,7 +21,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
     }
 
     /**
@@ -30,22 +28,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        #dd($request);
-        $validatedData = $request->validate ([
-            'text' => 'required|max:255',
-        ]);
 
-        if($request->hasFile('image')) {
-            $validatedData['image'] = $request->file('image')->store('post_img','public');
-        }
-
-        $validatedData['user_id'] = auth()->id();
-
-        Post::create($validatedData);
-
-        $posts = Post::cursorPaginate(5);
-
-        return view('posts.create');
     }
 
     /**
@@ -54,10 +37,10 @@ class PostController extends Controller
     //can send comment numbers here also 
     public function show(string $id)
     {
-        $post = Post::findOrFail($id);
-        $comments = $post->comments->sortByDesc('created_at');
-        //$comments = Comment::where('post_id', $id)->get();
-        return view('posts.show', ['post' => $post, 'comments' => $comments]);
+        $users = User::findOrFail($id);
+        $posts = $users->posts->sortByDesc('created_at');
+        $comments = $users->comments->sortByDesc('created_at');
+        return view('users.show', ['users' => $users, 'posts' => $posts, 'comments' => $comments]);
     }
 
     /**

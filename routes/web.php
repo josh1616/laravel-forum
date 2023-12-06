@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/posts/create', [PostController::class, 'store'])->name('posts.store');
     Route::get('/posts/{id}', [PostController::class, 'show']);
     Route::post('/posts/{id}/', [CommentController::class, 'store',])->name('posts.comments.store');
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('profile.show');
 });
 
 require __DIR__.'/auth.php';

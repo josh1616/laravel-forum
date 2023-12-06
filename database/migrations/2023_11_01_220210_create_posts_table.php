@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('text');
             $table->integer('likes')->default('0');
             $table->integer('dislikes')->default('0');
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->bigInteger('user_id')->unsigned();
