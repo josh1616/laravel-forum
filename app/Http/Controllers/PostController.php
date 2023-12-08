@@ -13,7 +13,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->cursorPaginate(5);
+        $posts = Post::latest()->Paginate(5);
         return view('home', ['posts' => $posts]);
     }
 
@@ -41,11 +41,11 @@ class PostController extends Controller
 
         $validatedData['user_id'] = auth()->id();
 
-        Post::create($validatedData);
+        $post = Post::create($validatedData);
 
-        $posts = Post::cursorPaginate(5);
+        $id = $post->id;
 
-        return view('posts.create');
+        return redirect('posts/'. $id)->with('message', 'Post created');
     }
 
     /**
@@ -57,7 +57,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $comments = $post->comments->sortByDesc('created_at');
         //$comments = Comment::where('post_id', $id)->get();
-        return view('posts.show', ['post' => $post, 'comments' => $comments]);
+        return view('posts.show', ['post' => $post, 'comments' => $comments, 'id' => $id]);
     }
 
     /**
@@ -65,7 +65,10 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $comments = $post->comments->sortByDesc('created_at');
+        //$comments = Comment::where('post_id', $id)->get();
+        return view('posts.edit', ['post' => $post, 'comments' => $comments, 'id' => $id]);
     }
 
     /**
@@ -73,7 +76,29 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        // dd($request);
+        $validatedData = $request->validate ([
+            'text' => 'required|max:255',
+        ]);
+
+        if($request->hasFile('image')) {
+            $validatedData['image'] = $request->file('image')->store('post_img','public');
+        }
+
+        $validatedData['user_id'] = auth()->id();
+
+        // Post::where()->update($validatedData);
+        // $post = Post::findOrFail($id);
+        // $post->update($validatedData);
+        // $post = Post::findOrFail($id);
+        // $post->where($id === auth()->id())->update($validatedData);
+
+        $post = Post::find($id);
+        $post->update($validatedData);
+        // Post::update($validatedData);
+
+        return redirect('posts/'. $id)->with('message', 'Post updated');
     }
 
     /**
@@ -81,6 +106,8 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        return redirect('/');
     }
 }

@@ -27,11 +27,12 @@
                     @endguest
                 </div>
                 
-                <main class="flex flex-col px-12 py-16 max-w-3xl mx-auto w-full xl:px-6">
+                <main class="flex flex-col px-12 py-16 max-w-3xl mx-auto w-full xl:px-6 relative">
+                    @include('components.flash')
                     @if ($errors->any())
                         <div>
                             @foreach ($errors->all() as $error)
-                                <p>{{$error}}</p>
+                                <p class="mb-6 bg-red-700 text-white rounded-full py-2 px-4">{{$error}}</p>
                             @endforeach
                         </div>
                     @endif

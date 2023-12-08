@@ -43,7 +43,9 @@ class CommentController extends Controller
         $post = Post::findOrFail($post_id);
         $comments = $post->comments->sortByDesc('created_at');
         //$comments = Comment::where('post_id', $id)->get();
-        return view('posts.show', ['post' => $post, 'comments' => $comments]);
+        // return view('posts.show', ['post' => $post, 'comments' => $comments]);
+
+        return redirect('posts/'. $post_id)->with('message', 'Post created');
     }
 
     /**

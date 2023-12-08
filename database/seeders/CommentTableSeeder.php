@@ -18,6 +18,8 @@ class CommentTableSeeder extends Seeder
         $comment->text = "Lorem ipsum dolar sit amet consecutar";
         $comment->post_id = 1;
         $comment->user_id = 1;
+        $comment->likes = 10;
+        $comment->dislikes = 2;
         $comment->save();
 
         Comment::factory()->count(60)->create();

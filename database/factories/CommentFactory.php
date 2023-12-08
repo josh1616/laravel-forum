@@ -22,6 +22,8 @@ class CommentFactory extends Factory
     {
         return [
             'text' => fake()->text(),
+            'likes' => fake()->randomFloat(0,0,100),
+            'dislikes' => fake()->randomFloat(0,0,100),
             'post_id'=>Post::inRandomOrder()->first()->id,
             'user_id'=>User::inRandomOrder()->first()->id,
         ];

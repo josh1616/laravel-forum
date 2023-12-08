@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('text');
+            $table->integer('likes')->default('0');
+            $table->integer('dislikes')->default('0');
             $table->timestamps();
 
             $table->bigInteger('post_id')->unsigned();
