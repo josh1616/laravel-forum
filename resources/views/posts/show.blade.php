@@ -30,11 +30,11 @@
                             Delete
                         </a>
                     </p>
-                    {{-- <form method="POST" action="{{ route('posts.delete',['id' => $post->id]) }}">
+                    <form method="POST" action="{{ route('posts.delete',['id' => $post->id]) }}">
                         @csrf
                         @method('DELETE')
                         <button>Delete</button>
-                    </form> --}}
+                    </form>
                 </div>
                 
                 @endif

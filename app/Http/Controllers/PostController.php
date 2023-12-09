@@ -98,6 +98,7 @@ class PostController extends Controller
         $post->update($validatedData);
         // Post::update($validatedData);
 
+
         return redirect('posts/'. $id)->with('message', 'Post updated');
     }
 
@@ -106,8 +107,8 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $post->delete();
-        return redirect('/');
+        return redirect('/')->with('messageDelete', 'Post deleted');
     }
 }

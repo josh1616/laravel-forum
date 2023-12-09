@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
     //Save edited Post
     Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
     // Delete Post
-    // Route::put('/posts/{id}', [PostController::class, 'destroy'])->name('posts.delete');
+    Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.delete');
 });
 
 require __DIR__.'/auth.php';
