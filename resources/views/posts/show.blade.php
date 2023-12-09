@@ -25,15 +25,10 @@
                             Edit
                         </a>
                     </p>
-                    <p>
-                        <a href="" class="text-red-700">
-                            Delete
-                        </a>
-                    </p>
                     <form method="POST" action="{{ route('posts.delete',['id' => $post->id]) }}">
                         @csrf
                         @method('DELETE')
-                        <button>Delete</button>
+                        <button class="text-red-700">Delete</button>
                     </form>
                 </div>
                 
@@ -66,9 +61,10 @@
         <h1 class="text-3xl text-black pb-6">{{$post->comments->count()}} comments</h1>
     </div>
 
-    <form action="{{ route('posts.comments.store',$post->id,['id' => $post->user->id])}}" method="POST">
+    <form action="{{ route('posts.comments.store',$post->id)}}" method="POST">
         @csrf
         <textarea rows="4" type="text" id="text" name="text" value="{{ old('text') }}" class="w-full border-1 border-gray-300 rounded-3xl mb-2"></textarea>
+        <input type="hidden" value="{{$post->user->id}}" name="user_id" />
         <input type="submit" value="Submit" class="bg-green-400 text-base rounded-full text-black text-base inline-block py-2 px-5 mb-12">
     </form>
 

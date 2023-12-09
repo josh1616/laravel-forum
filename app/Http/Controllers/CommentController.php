@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
-#use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Notifications\NewComment;
+use App\Models\User;
 
 class CommentController extends Controller
 {
@@ -28,7 +29,7 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $post_id)
+    public function store(Request $request, string $post_id)
     {
 
         $validatedData = $request->validate ([
@@ -45,8 +46,15 @@ class CommentController extends Controller
         //$comments = Comment::where('post_id', $id)->get();
         // return view('posts.show', ['post' => $post, 'comments' => $comments]);
 
+        $user_id = $request->user_id;
+
+        $user = User::findOrFail($user_id);
+        $user->notify(new NewComment("Commented on your post"));
+
         return redirect('posts/'. $post_id)->with('message', 'Post created');
     }
+
+    
 
     /**
      * Display the specified resource.
