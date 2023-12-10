@@ -13,6 +13,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+        @livewireStyles
     </head>
     <body>
         <div style="max-width: 1920px">
@@ -29,6 +31,7 @@
                 
                 <main class="flex flex-col px-12 py-16 max-w-3xl mx-auto w-full xl:px-6 relative">
                     
+
                     @include('components.flash')
                     @if ($errors->any())
                         <div>
@@ -43,6 +46,7 @@
                 </main>
             </div>
         </div>
+        @livewireScripts
     </body>
 </html>
 

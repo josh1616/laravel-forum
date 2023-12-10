@@ -29,30 +29,31 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, string $post_id)
-    {
+    // public function store(Request $request, string $post_id)
+    // {
 
-        $validatedData = $request->validate ([
-            'text' => 'required|max:255',
-        ]);
+    //     $validatedData = $request->validate ([
+    //         'text' => 'required|max:255',
+    //     ]);
 
-        $validatedData['user_id'] = auth()->id();
-        $validatedData['post_id'] = $post_id;
+    //     $validatedData['user_id'] = auth()->id();
+    //     $validatedData['post_id'] = $post_id;
 
-        Comment::create($validatedData);
+    //     Comment::create($validatedData);
 
-        $post = Post::findOrFail($post_id);
-        $comments = $post->comments->sortByDesc('created_at');
-        //$comments = Comment::where('post_id', $id)->get();
-        // return view('posts.show', ['post' => $post, 'comments' => $comments]);
+    //     $post = Post::findOrFail($post_id);
+    //     $comments = $post->comments->sortByDesc('created_at');
+    //     //$comments = Comment::where('post_id', $id)->get();
+    //     // return view('posts.show', ['post' => $post, 'comments' => $comments]);
 
-        $user_id = $request->user_id;
+    //     $user_id = $request->user_id;
 
-        $user = User::findOrFail($user_id);
-        $user->notify(new NewComment("Commented on your post"));
+    //     $user = User::findOrFail($user_id);
+    //     $user->notify(new NewComment("Commented on your post"));
 
-        return redirect('posts/'. $post_id)->with('message', 'Post created');
-    }
+    //     return redirect('posts/'. $post_id)->with('message', 'Post created');
+        
+    // }
 
     
 
