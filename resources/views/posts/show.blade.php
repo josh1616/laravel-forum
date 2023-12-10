@@ -18,7 +18,7 @@
                     <p class="inline-block text-gray-800 text-base">{{$post->created_at}}</p>
                 </div>
                 @auth
-                @if(Auth::id() === $post->user->id)
+                @if(Auth::id() === $post->user->id || Auth::user()->hasRole('admin'))
                 <div class="flex items-center">
                     <p class="mr-2">
                         <a href="{{ route('posts.edit', ['id' => $post->id]) }}">
@@ -31,7 +31,6 @@
                         <button class="text-red-700">Delete</button>
                     </form>
                 </div>
-                
                 @endif
             @endauth
             </div>

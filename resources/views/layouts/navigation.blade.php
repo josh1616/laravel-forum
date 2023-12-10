@@ -107,6 +107,9 @@
             <div class="bg-green-700 w-6 h-6 rounded-full mr-3 -xl:mr-0"></div>
             <p class="font-bold -xl:hidden">Josh's Forum</p>
         </a>
+        @role('admin')
+        <p class="text-xl text-black p-3 -xl:hidden">Admin</p>
+        @endrole
         @auth
         <button class="flex items-center w-full ease-linear rounded-xl duration-150 p-3 hover:bg-green-200 -xl:p-2 -xl:justify-center">
             <img src="\img\notification-icon--18x20.svg" alt="notification icon" class="mr-3 -xl:mr-0"/>
