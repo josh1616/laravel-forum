@@ -35,9 +35,9 @@ class NewComment extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Someone commented on your post')
+                    // ->action('Notification Action', url('/'))
+                    ->line('Have a great day!');
     }
 
     /**

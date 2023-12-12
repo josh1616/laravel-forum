@@ -12,18 +12,19 @@
     <img src="\img\profile-pic.png" class="h-16 w-16 mr-6">
     <p class="text-2xl text-black">{{$users->name}}</p>
 </div>
-    <div class="mb-12">
+    {{-- <div class="mb-12">
         <button class="bg-green-400 text-base rounded-full text-black text-base inline-block py-2 px-5 mr-4 hover:bg-green-400">Posts</button>
         <button class="bg-green-200 text-base rounded-full text-black text-base inline-block py-2 px-5 hover:bg-green-400">Comments</button>
-    </div>
-    <div id="posts">
+    </div> --}}
+    <div id="posts" class="mb-6">
+        <h2 class="text-2xl text-black mb-6">Posts</h2>
         @foreach ($posts as $post)
         {{-- replace manual link !bad --}}
             <a href="/posts/{{$post->id}}" class="border border-1 border-gray-300 rounded-3xl p-6 mb-8 max-w-3xl flex flex-col ease-linear duration-150 hover:border-black hover:cursor-pointer">
                     <div class="flex items-center mb-4">
                         <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
                         <object>
-                            <a href="/users/{{$users->id}}">
+                            <a href="{{route('profile.show', ['id' => $users->id])}}">
                                 <p class="inline-block text-black text-base mr-2.5 relative z-50 hover:underline">{{$post->user->name}}</p>
                             </a>
                         </object>
@@ -58,9 +59,9 @@
     </div>
 
     <div id="comments">
-        <p>comments</p>
+        <h2 class="text-2xl text-black mb-6">Comments</h2>
 
-    @include('comments.comments')
+        @include('comments.comments')
     </div>
 
     

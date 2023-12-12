@@ -68,7 +68,7 @@
     
         @include('comments.comments') --}}
     
-        @livewire('submit-comments', ['post' => $post])
+        @livewire('submit-comments', ['post' => $post, 'user_id' => $post->user_id])
 
     </div>
 
