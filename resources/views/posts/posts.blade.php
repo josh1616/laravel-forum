@@ -21,15 +21,15 @@
             @endif
             
             <div class="flex">
-                <div class="py-1 px-4 bg-green-200 rounded-full flex mr-3.5">
+                {{-- <div class="py-1 px-4 bg-green-200 rounded-full flex mr-3.5">
                     <img src="\img\upvote.svg" alt="upvote" class="mr-2">
                     <p>{{$post->likes}}</p>
                 </div>
                 <div class="py-1 px-4 bg-red-200 rounded-full flex mr-3.5">
                     <img src="\img\downvote.svg" alt="upvote" class="mr-2">
                     <p>{{$post->dislikes}}</p>
-                </div>
-                <div class="py-1 px-4 bg-gray-200 rounded-full flex">
+                </div> --}}
+                <div class="py-1 px-4 bg-gray-200 rounded-full flex bg-green-200">
                     <img src="\img\message.svg" alt="message icon" class="mr-2">
                     <p class="text-black text-base">{{$post->comments->count()}}</p>
                 </div>

@@ -9,7 +9,7 @@
 
 @section('content')
     {{-- <h1 class="text-3xl	text-black mb-12">{{$post->id}}</h1> --}}
-    <div class="border-b border-gray-300 mb-12 w-full">
+    <div class="mb-12 w-full">
         <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-12 max-w-3xl flex flex-col w-full">
             <div class="flex items-center mb-4 justify-between">
                 <div class="flex items-center">
@@ -34,15 +34,15 @@
                 @endif
             @endauth
             </div>
-            <p class="text-2xl text-black mb-4">
+            <p class="text-2xl text-black">
                 {{$post->text}}
             </p>
             @if(!is_null($post->image)) 
-                <div class="mb-4 max-h-96 overflow-y-hidden rounded-2xl w-full border border-gray-200">
+                <div class="mb-4 max-h-96 overflow-y-hidden rounded-2xl w-full border border-gray-200 my-4">
                     <img src="{{ asset('storage/' . $post->image)}}" alt="picture related to post" class="rounded-2xl w-full">
                 </div>
             @endif
-            <div class="flex">
+            {{-- <div class="flex">
                 <div class="py-1 px-4 bg-green-200 rounded-full flex mr-3.5">
                     <img src="\img\upvote.svg" alt="upvote" class="mr-2">
                     <p>{{$post->likes}}</p>
@@ -51,7 +51,7 @@
                     <img src="\img\downvote.svg" alt="upvote" class="mr-2">
                     <p>{{$post->dislikes}}</p>
                 </div>
-            </div>
+            </div> --}}
             
         </div>
 

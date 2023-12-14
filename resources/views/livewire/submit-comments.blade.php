@@ -2,6 +2,8 @@
     <div>
         <h1 class="text-3xl text-black pb-6">{{$comments->count()}} comments</h1>
     </div>
+
+    
     
     <div>
         <textarea wire:model="inputComment" rows="4" type="text" id="text" name="text" value="" class="w-full border-1 border-gray-300 rounded-3xl mb-2"></textarea>
@@ -9,7 +11,11 @@
         <button wire:click="submitComment" class="bg-green-400 text-base rounded-full text-black text-base inline-block py-2 px-5 mb-12">Submit</button>
     </div>
 
-        
+    @if(session('message'))
+        <div class="text-black bg-green-300 top-0 text-center w-full rounded-full py-2 mb-12">
+            {{session('message')}}
+        </div>     
+    @endif
 
     @foreach($comments as $comment)
 
@@ -23,10 +29,10 @@
             </object>
             <p class="inline-block text-gray-800 text-base">{{$comment->created_at}}</p>
         </div>
-        <p class="text-2xl text-black mb-4">
+        <p class="text-2xl text-black">
             {{$comment->text}}
         </p>
-        <div class="flex">
+        {{-- <div class="flex">
             <div class="py-1 px-4 bg-green-200 rounded-full flex mr-3.5">
                 <img src="\img\upvote.svg" alt="upvote" class="mr-2">
                 <p>{{$comment->likes}}</p>
@@ -35,7 +41,7 @@
                 <img src="\img\downvote.svg" alt="upvote" class="mr-2">
                 <p>{{$comment->dislikes}}</p>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     @endforeach   

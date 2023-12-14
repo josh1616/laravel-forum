@@ -37,6 +37,8 @@ class SubmitComments extends Component
         $userNotify->notify(new NewComment("Commented on your post"));
         
         $this->reset('inputComment');
+
+        request()->session()->flash('message','Comment created');
     }
 
     #[computed()]
