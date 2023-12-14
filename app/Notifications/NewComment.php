@@ -34,10 +34,10 @@ class NewComment extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
+
+
         return (new MailMessage)
-                    ->line('Someone commented on your post')
-                    // ->action('Notification Action', url('/'))
-                    ->line('Have a great day!');
+                    ->line($notifiable->name . ' someone commented on your post');
     }
 
     /**

@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
-@section('header')
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{$post->text}}</title>
-@endsection
+@section('page-title', 'Post')
 
 @section('content')
     {{-- <h1 class="text-3xl	text-black mb-12">{{$post->id}}</h1> --}}
@@ -13,8 +8,12 @@
         <div class="border border-1 border-gray-300 rounded-3xl p-6 mb-12 max-w-3xl flex flex-col w-full">
             <div class="flex items-center mb-4 justify-between">
                 <div class="flex items-center">
-                    <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
-                    <p class="inline-block text-black text-base mr-2.5">{{$post->user->name}}</p>
+                    <img src="\img\profile-pic.svg" alt="profile picture" class="mr-2.5 w-9 h-9">
+                    <object>
+                        <a href="{{route('profile.show', ['id' => $post->user->id])}}">
+                            <p class="inline-block text-black text-base mr-2.5 relative z-50 hover:underline">{{$post->user->name}}</p>
+                        </a>
+                    </object>
                     <p class="inline-block text-gray-800 text-base">{{$post->created_at}}</p>
                 </div>
                 @auth

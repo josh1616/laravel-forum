@@ -1,15 +1,10 @@
 @extends('layouts.app')
 
-@section('header')
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
-@endsection
+@section('page-title', 'User profile')
 
 @section('content')
 <div class="flex items-center border-b border-gray-300 pb-6 mb-6">
-    <img src="\img\profile-pic.png" class="h-16 w-16 mr-6">
+    <img src="\img\profile-pic.svg" class="h-16 w-16 mr-6">
     <p class="text-2xl text-black">{{$users->name}}</p>
 </div>
     {{-- <div class="mb-12">
@@ -22,7 +17,7 @@
         {{-- replace manual link !bad --}}
             <a href="/posts/{{$post->id}}" class="border border-1 border-gray-300 rounded-3xl p-6 mb-8 max-w-3xl flex flex-col ease-linear duration-150 hover:border-black hover:cursor-pointer">
                     <div class="flex items-center mb-4">
-                        <img src="\img\profile-pic.png" alt="profile picture" class="mr-2.5">
+                        <img src="\img\profile-pic.svg" alt="profile picture" class="mr-2.5 h-9 w-9">
                         <object>
                             <a href="{{route('profile.show', ['id' => $users->id])}}">
                                 <p class="inline-block text-black text-base mr-2.5 relative z-50 hover:underline">{{$post->user->name}}</p>
@@ -41,15 +36,15 @@
                     @endif
                     
                     <div class="flex">
-                        <div class="py-1 px-4 bg-green-200 rounded-full flex mr-3.5">
+                        {{-- <div class="py-1 px-4 bg-green-200 rounded-full flex mr-3.5">
                             <img src="\img\upvote.svg" alt="upvote" class="mr-2">
                             <p>{{$post->likes}}</p>
                         </div>
                         <div class="py-1 px-4 bg-red-200 rounded-full flex mr-3.5">
                             <img src="\img\downvote.svg" alt="upvote" class="mr-2">
                             <p>{{$post->dislikes}}</p>
-                        </div>
-                        <div class="py-1 px-4 bg-gray-200 rounded-full flex">
+                        </div> --}}
+                        <div class="py-1 px-4 bg-green-200 rounded-full flex">
                             <img src="\img\message.svg" alt="message icon" class="mr-2">
                             <p class="text-black text-base">{{$post->comments->count()}}</p>
                         </div>
@@ -64,13 +59,7 @@
         @include('comments.comments')
     </div>
 
+    <h2 class="text-2xl text-black mb-6">Best friend</h2>
+    <p class="text-base text-black">{{$users->bestFriend->name}}</p>
     
 @endsection
-
-<script>
-    const posts = document.getElementById('posts');
-    const comments = document.getElementById('comments');
-
-    comments.style.display = 'none';
-    posts.style.display = 'none';
-</script>

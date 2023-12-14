@@ -18,12 +18,13 @@ class SubmitComments extends Component
 
     public User $user;
 
-    
-
-
-
     #[Rule('required|max:255')]
     public string $inputComment;
+
+    protected $rules = [
+        'inputComment' => 'required|max:255'
+    ];
+    
 
     public function submitComment() {
         $this->validate();
@@ -34,7 +35,7 @@ class SubmitComments extends Component
         ]);
 
         $userNotify = User::findOrFail($this->post->user_id);
-        $userNotify->notify(new NewComment("Commented on your post"));
+        $userNotify->notify(new NewComment(['name' => $this->post->user->name]));
         
         $this->reset('inputComment');
 
