@@ -11,6 +11,11 @@
             </a>
         </div>
     </div>
+
+    <form action="{{ route('index')}}" method="GET">
+        <input name="search" type="search" class="w-full border-1 border-gray-300 rounded-3xl mb-6">
+        <input type="submit" value="Submit" class="bg-black text-base rounded-full text-white text-base inline-block py-2 px-5 mb-12">
+    </form>
     
     @include('posts.posts')
 @endsection

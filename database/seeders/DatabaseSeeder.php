@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(AdminSeeder::class);
         $this->call(BestFriendTableSeeder::class);
+        $this->call(TagTableSeeder::class);
         
         // \App\Models\User::factory(10)->create();
 

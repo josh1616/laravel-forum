@@ -12,6 +12,9 @@
         <button class="bg-green-200 text-base rounded-full text-black text-base inline-block py-2 px-5 hover:bg-green-400">Comments</button>
     </div> --}}
     <div id="posts" class="mb-6">
+        {{-- @foreach ($all_users as $all_user)
+            {{$all_user->tags}}
+        @endforeach --}}
         <h2 class="text-2xl text-black mb-6">Posts</h2>
         @foreach ($posts as $post)
         {{-- replace manual link !bad --}}
@@ -60,6 +63,8 @@
     </div>
 
     <h2 class="text-2xl text-black mb-6">Best friend</h2>
-    <p class="text-base text-black">{{$users->bestFriend->name}}</p>
+    @if(!is_null($users->bestFriend->name))
+        <p class="text-base text-black">{{$users->bestFriend->name}}</p>
+    @endif
     
 @endsection

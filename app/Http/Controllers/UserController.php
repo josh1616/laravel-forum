@@ -40,7 +40,7 @@ class UserController extends Controller
         $users = User::findOrFail($id);
         $posts = $users->posts->sortByDesc('created_at');
         $comments = $users->comments->sortByDesc('created_at');
-        return view('users.show', ['users' => $users, 'posts' => $posts, 'comments' => $comments]);
+        return view('users.show', ['users' => $users, 'posts' => $posts, 'comments' => $comments, 'all_users' => User::all()]);
     }
 
     /**

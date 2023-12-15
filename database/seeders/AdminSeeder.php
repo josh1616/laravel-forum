@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Permission;
 
 
 class AdminSeeder extends Seeder
@@ -24,6 +25,8 @@ class AdminSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ]
             );
+        Permission::create(['name' => 'edit articles']);
         $user->assignRole('admin');
+        $user->givePermissionTo('edit articles');
     }
 }

@@ -54,4 +54,8 @@ class User extends Authenticatable
     public function bestFriend() {
         return $this->hasOne(BestFriend::class);
     }
+
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
 }

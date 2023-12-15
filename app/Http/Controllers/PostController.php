@@ -12,10 +12,15 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::latest()->Paginate(8);
-        return view('home', ['posts' => $posts]);
+        $posts = Post::latest();
+        $search_input = $request->input('search');
+        if (request()->has('search')) {
+            $posts = Post::query()->where('text', 'LIKE', "%{$search_input}%");
+        }
+
+        return view('home')->with('posts', $posts->Paginate(8));
     }
 
     /**

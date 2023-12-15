@@ -20,7 +20,7 @@ use App\Http\Controllers\UserController;
 //     return view('home', ['name' => 'Josh']);
 // });
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index'])->name('index');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
